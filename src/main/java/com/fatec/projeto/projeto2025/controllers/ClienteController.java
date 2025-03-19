@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
@@ -49,6 +50,18 @@ public class ClienteController {
             }
         }
         return "Não existe cliente com id: "+id;
+    }
+
+    @PutMapping("/atualizarCliente/{id}")
+    public String AtualizarCliente(@PathVariable Long id, @RequestBody Cliente cliente){
+        for(Cliente c: clientes){
+            if(c.getId().equals(id)){
+                c.setNome(cliente.getNome());
+                c.setIdade(cliente.getIdade());
+                return "Cliente atualizado com sucesso";
+            }
+        }
+        return "Não existe um cliente cadastrado com o id: "+id;
     }
 
 }
