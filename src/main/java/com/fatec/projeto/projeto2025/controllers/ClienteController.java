@@ -3,6 +3,7 @@ package com.fatec.projeto.projeto2025.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fatec.projeto.projeto2025.domain.cliente.ClienteService;
 import com.fatec.projeto.projeto2025.entities.Cliente;
 
 
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/api/cliente")
 public class ClienteController {
+        private ClienteService clienteService;
+
         private static final Logger logger = (Logger) LoggerFactory.getLogger(ClienteController.class.getName());
 
         private final List<Cliente> clientes = new ArrayList<>();
@@ -38,7 +41,7 @@ public class ClienteController {
 
     @GetMapping("/listarClientes")
     public List<Cliente> ListarClientes(){
-        return clientes;
+        return clienteService.listarClientes();
     }
 
     @DeleteMapping("/deletarCliente/{id}")
