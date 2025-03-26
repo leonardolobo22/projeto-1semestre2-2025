@@ -8,3 +8,7 @@ git config --global user.email "leonardo.lobo@fatec.sp.gov.br"
 
 
 controlller
+
+http://localhost:8080/swagger-ui/index.html
+
+Localhost:8080/h2
